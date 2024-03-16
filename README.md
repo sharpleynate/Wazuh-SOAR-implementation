@@ -35,5 +35,6 @@ I SSH into my Wazuh server to conduct updates with this command, apt-get update 
 
 After conducting the update and upgrade installation, I run curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh && sudo bash ./wazuh-install.sh -a
 to begin with Wazuh. 
-![Screenshot 2024-03-15 233320](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/3909477e-b596-4033-97a7-c7d6e3db8dce)
+![Screenshot 2024-03-15 233509](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/ce0f747d-863a-40ce-a074-1ea2ddb2ba7d)
+
 
