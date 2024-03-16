@@ -26,7 +26,11 @@ I sign into my DigitalOcean account and start setting up my droplet configs, via
 ![Screenshot 2024-03-15 230843](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/c97e4807-95fc-4a36-87cc-8fc936945d4e)
 
 Through the configuration process, I set up a password for my droplet, as well as setting up a firewall so I'm not spammed by external scanners. 
+After that, I connect my firewall to its designated server.
 ![Screenshot 2024-03-15 231502](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/ae816ccb-afc2-4797-98c8-e474359802b5)
-
-I connect my new created firewall to its designated server.
 ![Screenshot 2024-03-15 231717](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/88991aca-1aa3-47bc-912e-45fc68fcadf2)
+
+I SSH into my Wazuh server to conduct updates with this command, apt-get update && apt-get upgrade -y
+I'm presented with a screen where I use both the default options. 
+![Screenshot 2024-03-15 232532](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/c83b33bb-07a1-42bc-9787-87f3b26f847d)
+
