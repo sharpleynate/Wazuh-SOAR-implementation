@@ -33,3 +33,7 @@ After that, I connect my firewall to its designated server.
 I SSH into my Wazuh server to conduct updates with this command, apt-get update && apt-get upgrade -y
 ![Screenshot 2024-03-15 232532](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/c83b33bb-07a1-42bc-9787-87f3b26f847d)
 
+After conducting the update and upgrade installation, I run curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh && sudo bash ./wazuh-install.sh -a
+to begin with Wazuh. 
+![Screenshot 2024-03-15 233320](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/3909477e-b596-4033-97a7-c7d6e3db8dce)
+
