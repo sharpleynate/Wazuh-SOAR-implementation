@@ -75,4 +75,9 @@ sudo apt-get install -y thehive
 ![Screenshot 2024-03-16 000359](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/a2bb1d83-dd97-4885-a8cd-3ce69664dc27)
 ![Screenshot 2024-03-16 000546](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/d35b0aa5-bc1a-408c-a170-8e36d579833d)
 
+# PART 3
+
+I nano into the cassandra.yaml file and configure my name, listen address, rpc address and seed. 
+
+![Screenshot 2024-03-16 001154](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/aa5957ca-abf4-487f-8225-404f375f6f8b)
 
