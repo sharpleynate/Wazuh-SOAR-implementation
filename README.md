@@ -7,7 +7,15 @@ Wazuh is an open-source security monitoring platform that provides intrusion det
 # What is TheHive?
 TheHive is a scalable and collaborative security incident response platform that allows security teams to efficiently manage and investigate security incidents, facilitating coordination, analysis, and remediation efforts across the organization.
 
-# STEP 01 
-Here I made my graph to have a clear plan of what will be doing for this project. 
+# PART 1 
+I focus my efforts in making a clear and comprehsenive graph of the architueral 
 ![image](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/9a168a0e-f721-4339-ba1b-88ead5a14537)
+
+# Part 2
+With my virutal enviorment already set up (VMWare), I head over to https://www.microsoft.com/en-us/software-download/windows10 to download the Windows 10 ISO. 
+Next, I download Sysmon and the configuration repository. https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon
+After that, I dragged the sysmon configuration file and placed it into the extracted sysmon directory. 
+From here, I run admin for Powershell, navigating to the sysmon directory and running the executable: .\Sysmon64.exe -i '.\sysmon config.xml' to install. 
+I sign into my DigitalOcean account and start setting up my droplet configs, via Ubuntu LTS. 
+![Screenshot 2024-03-15 230843](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/c97e4807-95fc-4a36-87cc-8fc936945d4e)
 
