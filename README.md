@@ -7,5 +7,6 @@ Wazuh is an open-source security monitoring platform that provides intrusion det
 # What is TheHive
 TheHive is a scalable and collaborative security incident response platform that allows security teams to efficiently manage and investigate security incidents, facilitating coordination, analysis, and remediation efforts across the organization.
 
+# Here I made my graph to have a clear plan of what will be doing for this project. 
 ![image](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/9a168a0e-f721-4339-ba1b-88ead5a14537)
 
