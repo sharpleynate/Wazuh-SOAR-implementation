@@ -70,4 +70,9 @@ sudo apt-get install -y thehive
 
 ![Screenshot 2024-03-15 234437](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/0027fc1d-b77c-4a67-8aa2-57ff84e98264)
 ![Screenshot 2024-03-15 235106](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/ca38ed4c-c13f-489a-8014-234b0213041f)
+![Screenshot 2024-03-15 235930](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/28077570-4dfa-4747-98d4-87945fd0c676)
+![Screenshot 2024-03-16 000202](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/096f9b45-792f-45d3-a715-a3f9b717dde3)
+![Screenshot 2024-03-16 000359](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/a2bb1d83-dd97-4885-a8cd-3ce69664dc27)
+![Screenshot 2024-03-16 000546](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/d35b0aa5-bc1a-408c-a170-8e36d579833d)
+
 
