@@ -31,6 +31,5 @@ After that, I connect my firewall to its designated server.
 ![Screenshot 2024-03-15 231717](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/88991aca-1aa3-47bc-912e-45fc68fcadf2)
 
 I SSH into my Wazuh server to conduct updates with this command, apt-get update && apt-get upgrade -y
-I'm presented with a screen where I use both the default options. 
 ![Screenshot 2024-03-15 232532](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/c83b33bb-07a1-42bc-9787-87f3b26f847d)
 
