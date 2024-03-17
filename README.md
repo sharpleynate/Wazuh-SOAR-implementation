@@ -1,4 +1,4 @@
-# Wazuh-SOAR-implementation
+![image](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/bd88434d-3693-4bae-b022-1c30343b5300)# Wazuh-SOAR-implementation
 
 In this project, we're setting up Wazuh with a minimum of one Agent for monitoring and security purposes. We're also incorporating a free SOAR (Security Orchestration, Automation, and Response) platform like Shuffle into the system. Our aim is to enable basic automation tasks, particularly focusing on data enrichment.
 
@@ -89,6 +89,9 @@ I configure the application.conf in the hive with nano /etc/thehive/application.
 ![Screenshot 2024-03-16 212056](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/063b47c1-55d0-4f32-98f2-990b0385ee9f)
 ![Screenshot 2024-03-16 212911](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/ee4e17bd-bb3b-463b-ae65-6f6ceaab114e)
 
-
+I log into Wazuh and add an agent with my appropriate configurations and install the agent via my windows vm with the following command,
+Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.7.3-1.msi -OutFile ${env.tmp}\wazuh-agent; msiexec.exe /i ${env.tmp}\wazuh-agent /q WAZUH_MANAGER='143.110.231.250' WAZUH_AGENT_NAME='mydfir' WAZUH_REGISTRATION_SERVER='143.110.231.250'. After this I start the service by running the net start wazuhsvc command. Upon checking 'services' I can see that Wazuh agent has been successfully installed and running. 
+![Screenshot 2024-03-16 213422](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/999ccb0a-0086-4df2-a01c-ffd1f35a9385)
+![Screenshot 2024-03-16 213706](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/a9e0053d-4139-467d-879d-88bbc9736ad4)
 
 
