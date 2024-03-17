@@ -85,4 +85,10 @@ I configure yml files for both cassandra and elasticsearch to enable them active
 ![Screenshot 2024-03-16 210949](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/66319c7b-2b0f-4fc6-a304-2fb25b576ba4)
 ![Screenshot 2024-03-16 211619](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/15695e6b-83c0-4592-acf6-bdecb200ecbe)
 
+I configure the application.conf in the hive with nano /etc/thehive/application.conf command to point the server to my public ip and set to corresponding name. This will ensure connectivity to thehive server upon starting and enabling the server. Now with the default creditials I sign into TheHive. 
+![Screenshot 2024-03-16 212056](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/063b47c1-55d0-4f32-98f2-990b0385ee9f)
+![Screenshot 2024-03-16 212911](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/ee4e17bd-bb3b-463b-ae65-6f6ceaab114e)
+
+
+
 
