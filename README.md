@@ -1,4 +1,4 @@
-# Enhanced Security Monitoring and Incident Response Implementation with Wazuh and TheHive
+# Security Monitoring and Incident Response Implementation with Wazuh and TheHive
 
 This project focuses on integrating Wazuh and TheHive platforms to enhance security monitoring and incident response capabilities.
 
