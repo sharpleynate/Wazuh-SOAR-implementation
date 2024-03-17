@@ -96,3 +96,24 @@ Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.7.3-
 ![Screenshot 2024-03-16 214104](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/54841288-bb20-435d-861d-4ca1eeef6538)
 
 # PART 4
+
+I head into my ossec.conf file to add another log analysis, in this case, I'll be adding Microsoft-Windows-Sysmon/Operational. After this, I restart Wazuh server in service application. I create a Downloads folder exclusion to download mimikatz. Once that is done, I run powershell to excute mimikatz in the terminal and check to see any events related to mimikatz. 
+![Screenshot 2024-03-16 215920](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/540ba9f0-ede2-4414-9ae7-01393b17b7e5)
+![Screenshot 2024-03-16 215858](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/c9deed24-c289-4bf4-b997-a92231448f9d)
+![Screenshot 2024-03-16 220624](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/b2856b88-6c58-4c0d-9eb5-f9d8c4f7a022)
+
+Due to the fact my sysmon events did not trigger any alerts or rules from Wazuh. By default, Wazuh does not log everything and only logs things when a rule or alert was triggered. I proceed to change this behavior by going into the wazuh manager and configuring the ossec.conf file. I go into ossec.conf and change both 'logall' to yes. I change the filebeat to 'true' and restart wazuh-manager. I nagivate over to the wazuh dashboard and setup a new index named 'wazuh-archives-**'. Within executing mimikatz in my windows vm, I can see my wazuh archives index picked it up. 
+![Screenshot 2024-03-16 220749](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/e5577631-6915-4380-ab28-d366036f98d1)
+![Screenshot 2024-03-17 012129](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/f981d193-d9e6-49db-b99c-5353c081b9f1)
+![Screenshot 2024-03-17 012714](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/f9918147-93d3-4667-bdd4-a6e724c3c868)
+![Screenshot 2024-03-17 014108](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/eff3b672-27f3-4094-b135-3fbc478a2754)
+![Screenshot 2024-03-17 015821](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/34266094-3678-4ab8-86f0-9306eff46d85)
+
+I proceed to adding sysmon_event1 rule in local_rules.xml, changing the id, descrition and type. Upon submitting this new update, I restart the manager.
+After changing the mimikatz filename and executing mikikatz, we see that sysmon has detected and logged the event. 
+![Screenshot 2024-03-17 021237](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/dcdb1636-d9af-40c7-bc69-fde0b9de98dd)
+![Screenshot 2024-03-17 023701](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/5032e468-00ae-480d-a5e3-da2b2ca4e53d)
+
+# Part 5
+
+
