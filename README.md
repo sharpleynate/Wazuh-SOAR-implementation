@@ -1,6 +1,6 @@
-# Wazuh-SOAR-implementation
+# Enhanced Security Monitoring and Incident Response Implementation with Wazuh and TheHive
 
-In this project, we're setting up Wazuh with a minimum of one Agent for monitoring and security purposes. We're also incorporating a free SOAR (Security Orchestration, Automation, and Response) platform like Shuffle into the system. Our aim is to enable basic automation tasks, particularly focusing on data enrichment.
+This project focuses on integrating Wazuh and TheHive platforms to enhance security monitoring and incident response capabilities.
 
 # What is Wazuh?
 
@@ -113,6 +113,7 @@ After changing the mimikatz filename and executing mikikatz, we see that sysmon 
 ![Screenshot 2024-03-17 021237](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/dcdb1636-d9af-40c7-bc69-fde0b9de98dd)
 ![Screenshot 2024-03-17 023701](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/5032e468-00ae-480d-a5e3-da2b2ca4e53d)
 
-# Part 5
+# In Conclusion
 
+The implementation process involved setting up Wazuh, an open-source security monitoring platform, along with TheHive, a collaborative security incident response platform. Initial steps included configuring virtual environments and downloading necessary tools like Sysmon and dependencies. Subsequently, server setups for Wazuh and TheHive were conducted, along with installations of associated components such as Java, Cassandra, and Elasticsearch. Agents were added to Wazuh for monitoring, and custom configurations were applied to enhance log analysis and event detection capabilities. Adjustments were made to ensure proper logging behavior in Wazuh, and additional rules were created to detect specific security events. Overall, the implementation aimed to bolster security monitoring and incident response capabilities within the organization's infrastructure.
 
