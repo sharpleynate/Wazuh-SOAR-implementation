@@ -10,12 +10,7 @@ Wazuh is an open-source security monitoring platform that provides intrusion det
 
 TheHive is a scalable and collaborative security incident response platform that allows security teams to efficiently manage and investigate security incidents, facilitating coordination, analysis, and remediation efforts across the organization.
 
-# PART 1 
-
-I focus my efforts in making a clear and comprehsenive graph of the architueral 
-![image](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/9a168a0e-f721-4339-ba1b-88ead5a14537)
-
-# Part 2
+# Part 1
 
 With my virutal enviorment already set up (VMWare), I head over to https://www.microsoft.com/en-us/software-download/windows10 to download the Windows 10 ISO. 
 Next, I download Sysmon and the configuration repository. https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon
@@ -74,7 +69,7 @@ sudo apt-get install -y thehive
 ![Screenshot 2024-03-16 000202](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/096f9b45-792f-45d3-a715-a3f9b717dde3)
 ![Screenshot 2024-03-16 000546](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/d35b0aa5-bc1a-408c-a170-8e36d579833d)
 
-# PART 3
+# PART 2
 
 I nano into the cassandra.yaml file and configure my name, listen address, rpc address and seed. I follow that up by also configuring and enabling cassandra and elasticsearch. Once that is finished, I check status for both servers to make sure they're running. 
 ![Screenshot 2024-03-16 001154](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/aa5957ca-abf4-487f-8225-404f375f6f8b)
@@ -94,7 +89,7 @@ Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.7.3-
 ![Screenshot 2024-03-16 213913](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/1ae530a9-e0ff-45a1-8397-cbb7047a5d2c)
 ![Screenshot 2024-03-16 214104](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/54841288-bb20-435d-861d-4ca1eeef6538)
 
-# PART 4
+# PART 3
 
 I head into my ossec.conf file to add another log analysis, in this case, I'll be adding Microsoft-Windows-Sysmon/Operational. After this, I restart Wazuh server in service application. I create a Downloads folder exclusion to download mimikatz. Once that is done, I run powershell to excute mimikatz in the terminal and check to see any events related to mimikatz. 
 ![Screenshot 2024-03-16 215920](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/540ba9f0-ede2-4414-9ae7-01393b17b7e5)
