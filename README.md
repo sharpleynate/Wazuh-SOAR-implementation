@@ -80,6 +80,9 @@ sudo apt-get install -y thehive
 I nano into the cassandra.yaml file and configure my name, listen address, rpc address and seed. I follow that up by also configuring and enabling cassandra and elasticsearch. Once that is finished, I check status for both servers to make sure they're running. 
 ![Screenshot 2024-03-16 001154](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/aa5957ca-abf4-487f-8225-404f375f6f8b)
 
-I configure yml files for both cassandra and elasticsearch to enable them active. 
+I configure yml files for both cassandra and elasticsearch to enable them active and give reading and writing perms to 'thehive' with  chown -R thehive:thehive /opt/thp command.
+![Screenshot 2024-03-16 211740](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/8f0433f4-1cad-48ed-858a-a19b4c3b3c1f)
 ![Screenshot 2024-03-16 210949](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/66319c7b-2b0f-4fc6-a304-2fb25b576ba4)
+![Screenshot 2024-03-16 211619](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/15695e6b-83c0-4592-acf6-bdecb200ecbe)
+
 
