@@ -12,24 +12,18 @@ TheHive is a scalable and collaborative security incident response platform that
 
 # Part 1
 
-With my virutal enviorment already set up (VMWare), I head over to https://www.microsoft.com/en-us/software-download/windows10 to download the Windows 10 ISO. 
-Next, I download Sysmon and the configuration repository. https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon
-After that, I dragged the sysmon configuration file and placed it into the extracted sysmon directory. 
-From here, I run admin for Powershell, navigating to the sysmon directory and running the executable: .\Sysmon64.exe -i '.\sysmon config.xml' to install. 
-
-I sign into my DigitalOcean account and start setting up my droplet configs, via Ubuntu LTS. 
+With my virtual environment already set up using VMWare, I navigate to Microsoft's Windows 10 ISO download page to acquire the necessary installation file. Next, I proceed to download Sysmon and its configuration repository from Microsoft Sysinternals.
+After obtaining the Sysmon configuration file, I place it into the extracted Sysmon directory. I then open PowerShell as an administrator, navigate to the Sysmon directory, and execute the following command to install: .\Sysmon64.exe -i '.\sysmon config.xml'. Following this, I sign into my DigitalOcean account to commence setting up my droplet configurations using Ubuntu LTS.
 ![Screenshot 2024-03-15 230843](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/c97e4807-95fc-4a36-87cc-8fc936945d4e)
 
-Through the configuration process, I set up a password for my droplet, as well as setting up a firewall so I'm not spammed by external scanners. 
-After that, I connect my firewall to its designated server.
+During the configuration process, I establish a password for my droplet and configure a firewall to prevent spamming by external scanners. Subsequently, I connect the firewall to its designated server.
 ![Screenshot 2024-03-15 231502](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/ae816ccb-afc2-4797-98c8-e474359802b5)
 ![Screenshot 2024-03-15 231717](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/88991aca-1aa3-47bc-912e-45fc68fcadf2)
 
-I SSH into my Wazuh server to conduct updates with this command, apt-get update && apt-get upgrade -y
+I SSH into my Wazuh server to conduct updates by executing the following: "apt-get update && apt-get upgrade -y".
 ![Screenshot 2024-03-15 232532](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/c83b33bb-07a1-42bc-9787-87f3b26f847d)
 
-After conducting the update and upgrade installation, I run curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh && sudo bash ./wazuh-install.sh -a to begin with Wazuh. 
-Now that I wazuh is up and running, I start by adding a new droplet, TheHive server. Lastly, I download the prerequestites for this server.
+After completing the update and upgrade installation, I initiate the installation of Wazuh by running the following command: "curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh && sudo bash ./wazuh-install.sh -a". With Wazuh now up and running, I proceed to add a new droplet for TheHive server. Finally, I download the prerequisites for this server.
 
 **Dependences**
 apt install wget gnupg apt-transport-https git ca-certificates ca-certificates-java curl  software-properties-common python3-pip lsb-release
@@ -71,40 +65,39 @@ sudo apt-get install -y thehive
 
 # PART 2
 
-I nano into the cassandra.yaml file and configure my name, listen address, rpc address and seed. I follow that up by also configuring and enabling cassandra and elasticsearch. Once that is finished, I check status for both servers to make sure they're running. 
+I open the cassandra.yaml file using nano and proceed to configure my name, listen address, rpc address, and seed. Following that, I proceed to configure and enable both Cassandra and Elasticsearch. Once the configuration process is complete, I verify the status of both servers to ensure they are running properly.
 ![Screenshot 2024-03-16 001154](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/aa5957ca-abf4-487f-8225-404f375f6f8b)
 
-I configure yml files for both cassandra and elasticsearch to enable them active and give reading and writing perms to 'thehive' with  chown -R thehive:thehive /opt/thp command.
+I configure YAML files for both Cassandra and Elasticsearch to activate them and grant read and write permissions to 'thehive' using the command: sudo chown -R thehive:thehive /opt/thp
 ![Screenshot 2024-03-16 211740](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/8f0433f4-1cad-48ed-858a-a19b4c3b3c1f)
 ![Screenshot 2024-03-16 210949](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/66319c7b-2b0f-4fc6-a304-2fb25b576ba4)
 ![Screenshot 2024-03-16 211619](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/15695e6b-83c0-4592-acf6-bdecb200ecbe)
 
-I configure the application.conf in the hive with nano /etc/thehive/application.conf command to point the server to my public ip and set to corresponding name. This will ensure connectivity to thehive server upon starting and enabling the server. Now with the default creditials I sign into TheHive. 
+I use the command nano /etc/thehive/application.conf to configure the application.conf file in TheHive. Within the file, I set the server to my public IP address and assign the corresponding name. This setup ensures connectivity to TheHive server upon starting and enabling it. After completing the configuration, I sign into TheHive using the default credentials.
 ![Screenshot 2024-03-16 212056](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/063b47c1-55d0-4f32-98f2-990b0385ee9f)
 ![Screenshot 2024-03-16 212911](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/ee4e17bd-bb3b-463b-ae65-6f6ceaab114e)
 
-I log into Wazuh and add an agent with my appropriate configurations and install the agent via my windows vm with the following command,
-Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.7.3-1.msi -OutFile ${env.tmp}\wazuh-agent; msiexec.exe /i ${env.tmp}\wazuh-agent /q WAZUH_MANAGER='143.110.231.250' WAZUH_AGENT_NAME='mydfir' WAZUH_REGISTRATION_SERVER='143.110.231.250'. After this I start the service by running the net start wazuhsvc command. Upon checking 'services' I can see that Wazuh agent has been successfully installed and running. 
+I log into Wazuh and add an agent with the appropriate configurations. Then, I install the agent on my Windows VM using the following command: Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.7.3-1.msi -OutFile ${env.tmp}\wazuh-agent; msiexec.exe /i ${env.tmp}\wazuh-agent /q WAZUH_MANAGER='143.110.231.250' WAZUH_AGENT_NAME='mydfir' WAZUH_REGISTRATION_SERVER='143.110.231.250'. After installation, I start the service by running the command: net start wazuhsvc
+Upon checking the 'services', I confirm that the Wazuh agent has been successfully installed and is running.
 ![Screenshot 2024-03-16 213422](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/999ccb0a-0086-4df2-a01c-ffd1f35a9385)
 ![Screenshot 2024-03-16 213913](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/1ae530a9-e0ff-45a1-8397-cbb7047a5d2c)
 ![Screenshot 2024-03-16 214104](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/54841288-bb20-435d-861d-4ca1eeef6538)
 
 # PART 3
 
-I head into my ossec.conf file to add another log analysis, in this case, I'll be adding Microsoft-Windows-Sysmon/Operational. After this, I restart Wazuh server in service application. I create a Downloads folder exclusion to download mimikatz. Once that is done, I run powershell to excute mimikatz in the terminal and check to see any events related to mimikatz. 
+I navigate to my ossec.conf file to include another log analysis entry, specifically Microsoft-Windows-Sysmon/Operational. Subsequently, I restart the Wazuh server via the application service. I then establish an exclusion for the Downloads folder to prevent any downloads of Mimikatz. Once configured, I execute Mimikatz in the PowerShell terminal and monitor for any related events.
 ![Screenshot 2024-03-16 215920](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/540ba9f0-ede2-4414-9ae7-01393b17b7e5)
 ![Screenshot 2024-03-16 215858](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/c9deed24-c289-4bf4-b997-a92231448f9d)
 ![Screenshot 2024-03-16 220624](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/b2856b88-6c58-4c0d-9eb5-f9d8c4f7a022)
 
-Due to the fact my sysmon events did not trigger any alerts or rules from Wazuh. By default, Wazuh does not log everything and only logs things when a rule or alert was triggered. I proceed to change this behavior by going into the wazuh manager and configuring the ossec.conf file. I go into ossec.conf and change both 'logall' to yes. I change the filebeat to 'true' and restart wazuh-manager. I nagivate over to the wazuh dashboard and setup a new index named 'wazuh-archives-**'. Within executing mimikatz in my windows vm, I can see my wazuh archives index picked it up. 
+As my Sysmon events didn't trigger any alerts or rules from Wazuh, I address this by modifying the logging behavior. By default, Wazuh only logs events when a rule or alert is triggered. To change this, I access the Wazuh manager and modify the ossec.conf file. Specifically, I navigate to ossec.conf and set 'logall' to 'yes'. Additionally, I set filebeat to 'true' and restart wazuh-manager. Next, I configure a new index named 'wazuh-archives-**' within the Wazuh dashboard. After executing Mimikatz in my Windows VM, I confirm that Wazuh archives index successfully detected it.
 ![Screenshot 2024-03-16 220749](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/e5577631-6915-4380-ab28-d366036f98d1)
 ![Screenshot 2024-03-17 012129](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/f981d193-d9e6-49db-b99c-5353c081b9f1)
 ![Screenshot 2024-03-17 012714](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/f9918147-93d3-4667-bdd4-a6e724c3c868)
 ![Screenshot 2024-03-17 014108](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/eff3b672-27f3-4094-b135-3fbc478a2754)
 ![Screenshot 2024-03-17 015821](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/34266094-3678-4ab8-86f0-9306eff46d85)
 
-I proceed to adding sysmon_event1 rule in local_rules.xml, changing the id, descrition and type. Upon submitting this new update, I restart the manager.
-After changing the mimikatz filename and executing mikikatz, we see that sysmon has detected and logged the event. 
+I proceed to add the sysmon_event1 rule in the local_rules.xml file, modifying the ID, description, and type accordingly. Once I submit this update, I restart the Wazuh manager.After changing the filename for Mimikatz and executing it, we observe that Sysmon has successfully detected and logged the event.
 ![Screenshot 2024-03-17 021237](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/dcdb1636-d9af-40c7-bc69-fde0b9de98dd)
 ![Screenshot 2024-03-17 023701](https://github.com/sharpleynate/Wazuh-SOAR-implementation/assets/114451775/5032e468-00ae-480d-a5e3-da2b2ca4e53d)
 
